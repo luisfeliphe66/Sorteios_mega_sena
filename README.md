@@ -5,4 +5,5 @@
 - Cesar Oliveira.
 - José Fernando Brandão Conte.
 
-#Analise de dados:
+# Analise de dados:
+- Vamos analisar os dados da Mega-Sena neste notebook.
