@@ -1,4 +1,4 @@
-# Sorteios_mega_sena
+# Sorteios Mega Sena
 
 # Integrantes:
 - Luis Feliphe Da Silva Batista.
