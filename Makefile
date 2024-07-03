@@ -59,11 +59,16 @@ down:
 
 deploy:
 	$(MAKE) checkOS
+	$(MAKE) prepare
 	$(MAKE) up
 
 	sleep 10
 
 	$(MAKE) show
+
+prepare:
+	@docker volume create postgresql_data
+	@docker volume create redis_data
 
 show:
 	@echo ''
