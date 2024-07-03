@@ -59,6 +59,7 @@ down:
 
 deploy:
 	$(MAKE) checkOS
+# $(MAKE) remove
 	$(MAKE) prepare
 	$(MAKE) up
 
@@ -66,9 +67,14 @@ deploy:
 
 	$(MAKE) show
 
+# remove:
+# 	@docker volume rm postgresql_data
+# 	@docker volume rm redis_data
+
 prepare:
-	@docker volume create postgresql_data
-	@docker volume create redis_data
+	@docker network ls | grep public_airflow > /dev/null || docker network create public_airflow
+	@docker volume ls | grep postgresql_data > /dev/null || docker volume create postgresql_data
+	@docker volume ls | grep redis_data > /dev/null || docker volume create redis_data
 
 show:
 	@echo ''
