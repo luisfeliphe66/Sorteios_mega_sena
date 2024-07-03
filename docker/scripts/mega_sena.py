@@ -5,7 +5,7 @@ import pandas as pd
 
 # Função para ler os dados
 def read_data(**kwargs):
-    df = pd.read_csv('/mnt/data/base_mega_sena/data/base_mega_sena.csv')
+    df = pd.read_csv('/data/base_mega_sena.csv')
     kwargs['ti'].xcom_push(key='dataframe', value=df)
 
 # Função para filtrar os dados por período
@@ -25,7 +25,7 @@ def count_numbers(**kwargs):
     result_df = pd.DataFrame({'most_common_number': [most_common_number]})
     
     # Define o caminho do arquivo
-    export_dir = '/home/MegaSena/Resultado'
+    export_dir = '/resultado'
     result_csv_path = os.path.join(export_dir, 'most_common_number.csv')
     
     # Salva o DataFrame em um arquivo CSV
@@ -36,7 +36,6 @@ def count_numbers(**kwargs):
 default_args = {
     'owner': 'airflow',
     'depends_on_past': False,
-    'start_date': datetime(2023, 7, 1),
     'email_on_failure': False,
     'email_on_retry': False,
     'retries': 1,
@@ -48,7 +47,6 @@ dag = DAG(
     'mega_sena',
     default_args=default_args,
     description='Análise da Mega Sena',
-    schedule_interval=timedelta(days=1),
 )
 
 # Tasks
@@ -63,7 +61,6 @@ filter_data_task = PythonOperator(
     task_id='filter_data',
     python_callable=filter_data,
     provide_context=True,
-    op_kwargs={'start_date': '2023-01-01', 'end_date': '2023-12-31'},
     dag=dag,
 )
 
