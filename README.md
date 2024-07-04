@@ -9,7 +9,10 @@
 - Vamos analisar os dados da Mega-Sena neste notebook.
 - base_mega_sena.zip contém a base de dados do SUS/MegaSena de 2023.
 
-- Repositório com objetivo de analisar os dados da Mega-Sena a partir de conhecimentos em Phyton e Spark.
-
 # Código-fonte
 - mega_sena.py é o arquivo principal desenvolvido em python com a biblioteca airflow para criação do fluxo ETL.
+
+# ETL
+- unzip_task: Descompactar o arquivo base_mega_sena.zip em base_mega_sena.csv para processamento dos dados;
+- extract_task: Extrair os dados para um data frame;
+- load_task: Carregar os dados para um arquivo como resultado da transformação.
