@@ -1,28 +1,34 @@
-- Projeto destinado ao Airflow.
+# Sorteios Mega Sena - Airflow
+
+`Integrantes:`
+- Luis Feliphe Da Silva Batista.
+- Cesar Oliveira.
+- José Fernando Brandão Conte.
+
+# Analise de dados:
+- Vamos analisar os dados da Mega-Sena neste notebook.
+- base_mega_sena.zip contém a base de dados do SUS/MegaSena de 2023.
+
+# Código-fonte
+- `mega_sena.py` é o arquivo principal desenvolvido em python com a biblioteca airflow para criação do fluxo ETL.
+
+# ETL
+- unzip_task: Descompactar o arquivo `base_mega_sena.zip` em `base_mega_sena.csv` para processamento dos dados;
+- extract_task: Extrair os dados para um data frame;
+- load_task: Transferir os dados para um arquivo `base_mega_sena.csv` com resultado final.
 
 ```bash
-# Instalação do Docker no Ubuntu
 
-sudo apt update
-sudo apt install apt-transport-https ca-certificates curl software-properties-common
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
-echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-sudo apt update
-apt-cache policy docker-ce
-sudo apt install docker-ce
-sudo systemctl status docker
-sudo usermod -aG docker ${USER}
-docker build -t my_airflow_image .
-docker-compose up -d
+# Comandos para iniciar a execução do projeto
 
-# Instalação do Docker Compose no Ubuntu
+# Inicializar
+docker compose up -d
 
-sudo apt update
-sudo apt install docker-compose
-docker-compose --version
+# Subir os containers
+make up
 
-# Executando os serviços com Docker Compose
+# Derrubar os containers
+make down
 
-cd /caminho/para/seu/diretorio
-docker-compose up -d
-
+# buildar o código-fonte
+make deploy
