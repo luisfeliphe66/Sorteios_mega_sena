@@ -1,4 +1,4 @@
-# Sorteios Mega Sena
+# Sorteios Mega Sena - Airflow
 
 `Integrantes:`
 - Luis Feliphe Da Silva Batista.
