@@ -15,4 +15,20 @@
 # ETL
 - unzip_task: Descompactar o arquivo base_mega_sena.zip em base_mega_sena.csv para processamento dos dados;
 - extract_task: Extrair os dados para um data frame;
-- load_task: Carregar os dados para um arquivo como resultado da transformação.
+- load_task: Transferir os dados para um arquivo .csv com resultado final.
+
+```bash
+
+# Comandos para iniciar a execução do projeto
+
+# Inicializar
+docker compose up -d
+
+# Subir os containers
+make up
+
+# Derrubar os containers
+make down
+
+# buildar o código-fonte
+make deploy
