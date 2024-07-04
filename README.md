@@ -10,7 +10,7 @@
 - base_mega_sena.zip contém a base de dados do SUS/MegaSena de 2023.
 
 # Código-fonte
-- `mega_sena.py` é o arquivo principal desenvolvido em python com a biblioteca airflow para criação do fluxo ETL.
+- `Sorteios_mega_sena.ipynb` é o arquivo principal desenvolvido em python com a biblioteca spark para processamento de dados.
 
 
 
