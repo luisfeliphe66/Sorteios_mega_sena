@@ -21,9 +21,6 @@
 
 # Comandos para iniciar a execução do projeto
 
-# Inicializar
-docker compose up -d
-
 # Subir os containers
 make up
 
