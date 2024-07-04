@@ -30,5 +30,5 @@ make up
 # Derrubar os containers
 make down
 
-# buildar o código-fonte
+# Compilar código
 make deploy
