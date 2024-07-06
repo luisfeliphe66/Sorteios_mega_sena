@@ -1,34 +1,36 @@
 from airflow import DAG
-from airflow.operators.bash import BashOperator
-from airflow.operators.empty import EmptyOperator
-from airflow.operators.python import PythonOperator
+from airflow.operators.python_operator import PythonOperator
 import zipfile
-import os
-
-from datetime import datetime
 import pandas as pd
+from datetime import datetime
+import os
 
 ### Funções para PythonOperator
 
-# Função para descompactar o arquivo ZIP
-def unzip():
-    filepath_zip = '/data/base_mega_sena.zip'
-    folder_zip = '/data'
-    filename_csv = 'base_mega_sena.csv'
+# Função para compactar o arquivo CSV em ZIP
+def zip_csv():
+    csv_filepath = '/data/base_mega_sena.csv'
+    zip_filepath = '/data/base_mega_sena.zip'
 
-    if zipfile.is_zipfile(filepath_zip):
-        with zipfile.ZipFile(filepath_zip, 'r') as zip_ref:
-            zip_ref.extract(filename_csv, path=folder_zip)
-        print(f"Arquivo extraído para {folder_zip}")
-    else:
-        print(f"{filepath_zip} não é um arquivo ZIP válido.")
+    with zipfile.ZipFile(zip_filepath, 'w', zipfile.ZIP_DEFLATED) as zip_file:
+        zip_file.write(csv_filepath, os.path.basename(csv_filepath))
 
-# Função para ler o arquivo CSV
+    # Alterar permissões do arquivo ZIP para o usuário
+    os.chmod(zip_filepath, 0o666)
+    os.chown(zip_filepath, os.getuid(), os.getgid())
+
+    print(f"Arquivo CSV comprimido em {zip_filepath} com permissões para o usuário 'luis'.")
+
+# Função para ler o arquivo ZIP e extrair o dataframe
 def extract(**kwargs):
-    df = pd.read_csv('/data/base_mega_sena.csv', encoding='ISO-8859-1', sep=';')
-    
-    print(df.head())
-    
+    zip_filepath = '/data/base_mega_sena.zip'
+
+    with zipfile.ZipFile(zip_filepath, 'r') as zip_ref:
+        with zip_ref.open('base_mega_sena.csv') as csv_file:
+            df = pd.read_csv(csv_file, encoding='ISO-8859-1', sep=';')
+
+    # Enviar dataframe para XCom
+    kwargs['ti'].xcom_push(key='dataframe', value=df.to_dict())
     return df
 
 # Definir DAG
@@ -39,15 +41,14 @@ dag = DAG(
     catchup=False
 )
 
-# Tarefa para descompactar o arquivo CSV
-unzip_task = PythonOperator(
-    task_id='unzip_task',
-    python_callable=unzip,
-    provide_context=True,
+# Tarefa para compactar o arquivo CSV em ZIP
+zip_task = PythonOperator(
+    task_id='zip_task',
+    python_callable=zip_csv,
     dag=dag
 )
 
-# Tarefa para ler o arquivo CSV
+# Tarefa para ler o arquivo ZIP e extrair o dataframe
 extract_task = PythonOperator(
     task_id='extract_task',
     python_callable=extract,
@@ -55,4 +56,4 @@ extract_task = PythonOperator(
     dag=dag
 )
 
-(unzip_task >> extract_task)
+(zip_task >> extract_task )

@@ -26,13 +26,11 @@ services:
 
   airflow-worker:
     image: bitnami/airflow-worker:latest
-    user: 1001:1001
     networks:
       - public_airflow
     volumes:
       - ../../docker/scripts:/opt/bitnami/airflow/dags:rw
       - ../../data:/data:rw
-      - ../../resultado:/resultado:rw
     environment:
       - AIRFLOW_FERNET_KEY=46BKJoQYlPPOexq0OhDZnIlNepKFf87WFwLbfzqDDho=
       - AIRFLOW_SECRET_KEY=a25mQ1FHTUh3MnFRSk5KMEIyVVU2YmN0VGRyYTVXY08=
@@ -50,7 +48,6 @@ services:
     volumes:
       - ../../docker/scripts:/opt/bitnami/airflow/dags:rw
       - ../../data:/data:rw
-      - ../../resultado:/resultado:rw
     environment:
       - AIRFLOW_FERNET_KEY=46BKJoQYlPPOexq0OhDZnIlNepKFf87WFwLbfzqDDho=
       - AIRFLOW_SECRET_KEY=a25mQ1FHTUh3MnFRSk5KMEIyVVU2YmN0VGRyYTVXY08=
@@ -68,7 +65,6 @@ services:
     volumes:
       - ../../docker/scripts:/opt/bitnami/airflow/dags:rw
       - ../../data:/data:rw
-      - ../../resultado:/resultado:rw
     environment:
       - AIRFLOW_FERNET_KEY=46BKJoQYlPPOexq0OhDZnIlNepKFf87WFwLbfzqDDho=
       - AIRFLOW_SECRET_KEY=a25mQ1FHTUh3MnFRSk5KMEIyVVU2YmN0VGRyYTVXY08=

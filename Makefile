@@ -17,6 +17,7 @@ SPACE_CHAR=$(subst ,, )
 SERVICE_APP=airflow
 PROJECT_DIR := $(CURDIR)
 DOCKER_COMPOSE_FILE=$(PROJECT_DIR)/docker/compose/docker-compose.yml
+CONTAINER_NAME := compose-airflow-worker-1
 
 # General targets:
 .PHONY: help up down exec log
@@ -59,17 +60,13 @@ down:
 
 deploy:
 	$(MAKE) checkOS
-# $(MAKE) remove
 	$(MAKE) prepare
 	$(MAKE) up
 
 	sleep 10
-
+	
+	$(MAKE) fix-permissions
 	$(MAKE) show
-
-# remove:
-# 	@docker volume rm postgresql_data
-# 	@docker volume rm redis_data
 
 prepare:
 	@docker network ls | grep public_airflow > /dev/null || docker network create public_airflow
@@ -104,3 +101,7 @@ prune-network:
 
 prune-volume:
 	docker volume prune
+
+fix-permissions:
+    @CONTAINER_ID=$$(docker ps -aqf "name=$(CONTAINER_NAME)") && \
+    docker exec -u 0 -it $$CONTAINER_ID chown -R 1001:root /data
