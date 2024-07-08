@@ -21,6 +21,6 @@
 - `Sorteios_mega_sena.ipynb` é o arquivo principal desenvolvido em python com a biblioteca spark para processamento de dados.
 
 
-Referências
+# Referências
 Documentação para ambiente [Spark](https://spark.apache.org/docs/latest/)
- e [Docker].(https://docs.docker.com/reference/)
+ e [Docker](https://docs.docker.com/reference/)
