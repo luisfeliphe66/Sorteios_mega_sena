@@ -13,8 +13,8 @@
 - `mega_sena.py` é o arquivo principal desenvolvido em python com a biblioteca airflow para criação do fluxo ETL.
 
 # ETL
-- `zip_task`: Descompactar o arquivo `base_mega_sena.zip` em `base_mega_sena.csv` para processamento dos dados;
 - `extract_task`: Extrair os dados para um data frame;
+- `zip_task`: Compactar o arquivo `base_mega_sena.cvs` em `base_mega_sena.zip` para processamento dos dados;
 
 ```bash
 
