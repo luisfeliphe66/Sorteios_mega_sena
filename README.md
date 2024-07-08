@@ -14,8 +14,8 @@
 -`caminho_arquivo_zip`, `diretorio_destino`:  Carregando os dados do AIRFLOW.
 - `delete_coluna_ordem`: Importações e Definição da Função
 - `contagem_bolas`, `contagem_bolas.plot`:  Gráfico de Barras com as Contagens nos Concursos.
-- `ultimos_numeros`, `ultimos_numeros.plot`:  Gráfico de Barras com os Números Mais Sorteados.
 - `sorted_group`: Exibi os Números da Sorte.
+- `ultimos_numeros`, `ultimos_numeros.plot`:  Gráfico de Barras com os Números Mais Sorteados.
 
 # Código-fonte
 - `Sorteios_mega_sena.ipynb` é o arquivo principal desenvolvido em python com a biblioteca spark para processamento de dados.
