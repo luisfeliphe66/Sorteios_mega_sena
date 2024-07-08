@@ -15,8 +15,10 @@
 # ETL
 - `extract_task`: Extrair os dados para um data frame;
 - `zip_task`: Compactar o arquivo `base_mega_sena.cvs` em `base_mega_sena.zip` para processamento dos dados;
+- `Make`: Automação para estrutura do projeto.
 
 ```bash
+* MAKE
 
 # Comandos para iniciar a execução do projeto
 
