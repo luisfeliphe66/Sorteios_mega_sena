@@ -30,3 +30,8 @@ make down
 
 # Compilar código-fonte
 make deploy
+
+```
+# Referências
+- Documentação para ambiente [Airflow]([https://spark.apache.org/docs/latest/](https://airflow.apache.org/docs/))
+ e [Docker](https://docs.docker.com/reference/)
