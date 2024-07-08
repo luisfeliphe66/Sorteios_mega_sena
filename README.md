@@ -33,5 +33,5 @@ make deploy
 
 ```
 # Referências
-- Documentação para ambiente [Airflow]([https://spark.apache.org/docs/latest/](https://airflow.apache.org/docs/))
+- Documentação para ambiente [Airflow](https://airflow.apache.org/docs/)
  e [Docker](https://docs.docker.com/reference/)
