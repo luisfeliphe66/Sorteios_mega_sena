@@ -23,4 +23,4 @@
 
 Referências
 Documentação para ambiente [Spark](https://spark.apache.org/docs/latest/)
- e {Docker].(https://docs.docker.com/reference/)
+ e [Docker].(https://docs.docker.com/reference/)
