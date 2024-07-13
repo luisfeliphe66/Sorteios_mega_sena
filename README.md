@@ -23,7 +23,6 @@
 
 # Referências
 - Documentação para ambiente [Spark](https://spark.apache.org/docs/latest/)
-- base_mega_sena.zip contém a base de dados do SUS/MegaSena de 2023.
 
 # Sorteios Mega Sena - Airflow
 
