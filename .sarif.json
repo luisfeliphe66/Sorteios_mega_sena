@@ -1,0 +1,48 @@
+{
+    "version": "2.1.0",
+    "runs": [
+      {
+        "tool": {
+          "driver": {
+            "name": "Example SAST Tool",
+            "version": "1.0.0",
+            "informationUri": "https://example.com/sast-tool",
+            "rules": [
+              {
+                "id": "rule1",
+                "name": "Sensitive Data Exposure",
+                "shortDescription": {
+                  "text": "Possible exposure of sensitive data"
+                },
+                "properties": {
+                  "severity": "high"
+                }
+              }
+            ]
+          }
+        },
+        "results": [
+          {
+            "ruleId": "rule1",
+            "ruleIndex": 0,
+            "level": "error",
+            "message": {
+              "text": "Potential exposure of sensitive data in file /path/to/file.php"
+            },
+            "locations": [
+              {
+                "physicalLocation": {
+                  "artifactLocation": {
+                    "uri": "/path/to/file.php"
+                  }
+                }
+              }
+            ],
+            "properties": {
+              "severity": "high"
+            }
+          }
+        ]
+      }
+    ]
+  }
