@@ -24,6 +24,8 @@
 # Referências
 - Documentação para ambiente [Spark](https://spark.apache.org/docs/latest/)
 
+---
+
 # Sorteios Mega Sena - Airflow
 
 # Código-fonte
