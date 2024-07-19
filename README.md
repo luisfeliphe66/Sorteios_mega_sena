@@ -12,7 +12,7 @@
 # ETL:
 - `Make`: Automação para estrutura do projeto.
 - `caminho_arquivo_zip`, `diretorio_destino`:  Carregando os dados do AIRFLOW.
-- `delete_coluna_ordem`: Importações e Definição da Função
+- `delete_coluna_ordem`: Importações e Definição da Função.
 - `contagem_bolas`, `contagem_bolas.plot`:  Gráfico de Barras com as Contagens nos Concursos.
 - `sorted_group`: Exibi os Números da Sorte.
 - `ultimos_numeros`, `ultimos_numeros.plot`:  Gráfico de Barras com os Números Mais Sorteados.
