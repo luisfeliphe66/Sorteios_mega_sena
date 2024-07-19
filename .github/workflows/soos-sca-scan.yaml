@@ -13,6 +13,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
+
+    - name: Show current directory
+      run: pwd
+
+    - name: List files in root directory
+      run: ls -lhas
+
     - name: Run SOOS - Scan for vulnerabilities
       uses: soos-io/soos-sca-github-action@v2 # Get Latest Version from https://github.com/marketplace/actions/soos-core-sca
       with:
