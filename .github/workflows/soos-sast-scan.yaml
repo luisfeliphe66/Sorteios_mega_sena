@@ -18,4 +18,4 @@ jobs:
         with:
           client_id: ${{ secrets.SOOS_CLIENT_ID }}
           api_key: ${{ secrets.SOOS_API_KEY }}
-          project_name: "Mega Sena"
+          project_name: "SAST - Mega Sena"
