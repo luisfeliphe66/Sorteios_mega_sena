@@ -1,29 +1,25 @@
-name: "SOOS SAST Scan"
+name: SOOS SAST
 
 on:
   push:
-    branches: [ "main" ]
+    branches:
+      - main
   pull_request:
-    branches: [ "main" ]
-  workflow_dispatch:
+    branches:
+      - main
 
 jobs:
-  soos_sast:
-    name: SOOS SAST
+  soos_sast_job:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
+      - name: Checkout repository
+        uses: actions/checkout@v2
 
-      - name: Show current directory
-        run: pwd
-
-      - name: List files in root directory
-        run: ls -lhas
-
-      - name: SOOS SAST
+      - name: SOOS SAST GitHub Action
         uses: soos-io/soos-sast-github-action@v1.0.1
         with:
           client_id: ${{ secrets.SOOS_CLIENT_ID }}
           api_key: ${{ secrets.SOOS_API_KEY }}
           project_name: "SAST - Mega Sena"
-          log_level: DEBUG
+          source_code_path: "./Sorteios_mega_sena"  # Verifique se este caminho está correto
+          log_level: "DEBUG"
