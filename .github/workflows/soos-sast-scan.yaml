@@ -1,3 +1,5 @@
+name: "SOOS SAST Scan"
+
 on:
   push:
     branches: [ "main" ]
@@ -6,14 +8,15 @@ on:
   workflow_dispatch:
 
 jobs:
-  soos-sca-analysis:
-    name: SOOS SCA Scan
+  soos_sast_analysis_example:
+    name: SOOS SAST Analysis Example
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
-    - name: Run SOOS - Scan for vulnerabilities
-      uses: soos-io/soos-sca-github-action@v2 # Get Latest Version from https://github.com/marketplace/actions/soos-core-sca
-      with:
-        project_name: "Mega Sena"
-        client_id: ${{ secrets.SOOS_CLIENT_ID }}
-        api_key: ${{ secrets.SOOS_API_KEY }}
+      - uses: actions/checkout@master
+      - name: Run SOOS SAST Analysis
+        uses: soos-io/soos-sast-github-action@v1 # GET Latest Version from https://github.com/marketplace/actions/soos-sast
+        with:
+          client_id: ${{ secrets.SOOS_CLIENT_ID }}
+          api_key: ${{ secrets.SOOS_API_KEY }}
+          project_name: "Mega Sena"
+          sast_path: "SAST path relative to the repository or empty if it's on the root"
