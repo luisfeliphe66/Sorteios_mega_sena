@@ -81,7 +81,7 @@ show:
 checkOS:
 	@if ! cat /etc/os-release | grep -e '^NAME=.*Ubuntu.*' &> /dev/null; then echo "O seu Sistema Operacional precisa ser o Ubuntu!" && exit 1; fi;
 
-# Docker targets:
+## Docker targets:
 .PHONY: prune prune-image prune-dangling-image
 
 prune:
