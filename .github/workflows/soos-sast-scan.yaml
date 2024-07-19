@@ -21,6 +21,7 @@ jobs:
           project_name: "Mega Sena"
           scan_mode: "baseline"
           output_format: "sarif"
+          source_code_path: "The path to start searching for SAST files."
       - name: Upload SOOS DAST SARIF Report
         uses: github/codeql-action/upload-sarif@v3
         with:
